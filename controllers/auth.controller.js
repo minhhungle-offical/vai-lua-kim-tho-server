@@ -42,7 +42,7 @@ export const login = async (req, res) => {
 // POST: Register a new account
 export const signUp = async (req, res) => {
   try {
-    const { name, email, password } = req.body
+    const { email, password, ...body } = req.body
 
     // Check if email already exists
     const existingUser = await User.findOne({ email })
@@ -55,9 +55,9 @@ export const signUp = async (req, res) => {
 
     // Create new user
     const newUser = await User.create({
-      name,
       email,
       password: hashedPassword,
+      ...body,
     })
 
     // Generate JWT token
@@ -75,6 +75,7 @@ export const signUp = async (req, res) => {
         token,
         user: userData,
       },
+      null,
       201,
     )
   } catch (error) {

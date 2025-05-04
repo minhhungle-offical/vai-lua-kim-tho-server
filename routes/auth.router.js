@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
 router.post('/login', login)
 
 // POST /api/auth/signup
-router.post('/signup', signUp)
+router.post('/sign-up', signUp)
 
 // GET /api/auth/me (yêu cầu token)
 router.get('/profile', verifyToken, getProfile)

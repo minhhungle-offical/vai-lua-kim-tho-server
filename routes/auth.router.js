@@ -5,6 +5,13 @@ import { verifyToken } from '../middlewares/auth.middleware.js'
 const router = express.Router()
 
 // POST /api/auth/login
+router.get('/', (res, res) => {
+  res.status(200).json({
+    message: 'HI',
+  })
+})
+
+// POST /api/auth/login
 router.post('/login', login)
 
 // POST /api/auth/signup
